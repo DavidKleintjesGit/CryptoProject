@@ -19,11 +19,16 @@ class GetBalance
 
     public function calculateBalance(): BalanceCollection
     {
-        $ownedCoinsAmount = $this->sumTransactions();
+        $coinBalances = $this->sumTransactions();
+
+        if (!$coinBalances){
+            return new BalanceCollection();
+        }
+
         $currentMarketPrice = $this->getCurrentMarketPrice();
         $balance = [];
 
-        foreach ($ownedCoinsAmount as $coinGeckoId => $coin){
+        foreach ($coinBalances as $coinGeckoId => $coin){
             $id = $coinGeckoId;
             $quantity = $coin['quantity'];
             $value = $coin['value'];
@@ -57,10 +62,14 @@ class GetBalance
         return $balanceCollection;
     }
 
-    public function sumTransactions(): array
+    public function sumTransactions(): array|bool
     {
         $transactionEntityCollection = dispatch_sync(new GetTransactions());
         $totalAmounts = [];
+
+        if (!isset($transactionEntityCollection->list)) {
+            return false;
+        }
 
         foreach ($transactionEntityCollection->list as $transaction)
         {

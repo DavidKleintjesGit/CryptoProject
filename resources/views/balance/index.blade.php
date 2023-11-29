@@ -3,6 +3,7 @@
 @section('content')
     <div class="container mx-auto mt-8 p-8 bg-white shadow-md rounded">
         <h1 class="text-2xl font-bold mb-4">Balance Information</h1>
+        @if(isset($balanceInformation->list) && count($balanceInformation->list) > 0)
         <div class="overflow-x-auto">
             <table class="table-auto w-full border-collapse">
                 <thead>
@@ -27,5 +28,8 @@
                 </tbody>
             </table>
         </div>
+        @else
+            <p>Your balance is empty.</p>
+        @endif
     </div>
 @endsection

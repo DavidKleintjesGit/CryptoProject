@@ -27,6 +27,7 @@ class TransactionRepository
         });
 
         return $transactionEntityCollection;
+
     }
 
     public function persist($transactionObject): TransactionEntity
