@@ -8,9 +8,8 @@ use App\Objects\TransactionEntityCollection;
 
 class TransactionRepository
 {
-    public function fetch($id) : TransactionEntityCollection
+    public function fetch($id): TransactionEntityCollection
     {
-
         $transactionsEloquent = TransactionEloquent::where('user_id', $id)->get();
 
         $transactionEntityCollection = new TransactionEntityCollection();
@@ -28,10 +27,9 @@ class TransactionRepository
         });
 
         return $transactionEntityCollection;
-
     }
 
-    public function persist($transactionObject) : TransactionEntity
+    public function persist($transactionObject): TransactionEntity
     {
         $transaction = new TransactionEloquent();
         $transaction->user_id = $transactionObject->user_id;
@@ -43,7 +41,7 @@ class TransactionRepository
 
         $transaction->save();
 
-        $transactionEntity = new TransactionEntity(
+        return new TransactionEntity(
             id: $transaction->id,
             user_id: $transaction->user_id,
             coinGeckoId: $transaction->coinGeckoId,
@@ -51,9 +49,5 @@ class TransactionRepository
             quantity: $transaction->quantity,
             trade: $transaction->trade
         );
-
-        return $transactionEntity;
     }
-
-
 }

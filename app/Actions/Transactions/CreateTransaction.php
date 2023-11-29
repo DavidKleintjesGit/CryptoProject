@@ -10,21 +10,24 @@ use App\Repositories\TransactionRepository;
 
 class CreateTransaction
 {
-    public function handle(Request $request) : TransactionEntity
+    public function __construct(
+        private readonly Request $request
+    ){
+    }
+
+    public function handle(TransactionRepository $transactionRepository): TransactionEntity
     {
         $userId = Auth::User()->id;
 
         $transactionObject = new Transaction(
             user_id: $userId,
-            coinGeckoId: $request->CoinGeckoId,
-            price: $request->price,
-            quantity: $request->quantity,
-            trade: $request->trade
+            coinGeckoId: $this->request->CoinGeckoId,
+            price: $this->request->price,
+            quantity: $this->request->quantity,
+            trade: $this->request->trade
         );
 
-        $transactionRepistory = new TransactionRepository();
-
-        return $transactionRepistory->persist($transactionObject);
+        return $transactionRepository->persist($transactionObject);
     }
 
 }

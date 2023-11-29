@@ -22,9 +22,9 @@ class CoinGeckoService
                 id: $coin->id,
                 name: $coin->name,
                 currentPrice: $coin->current_price,
-                priceChange1h: $coin->price_change_percentage_1h_in_currency,
-                priceChange24h: $coin->price_change_percentage_24h_in_currency,
-                priceChange7d: $coin->price_change_percentage_7d_in_currency
+                priceChange1h: round($coin->price_change_percentage_1h_in_currency, 2),
+                priceChange24h: round($coin->price_change_percentage_24h_in_currency, 2),
+                priceChange7d: round($coin->price_change_percentage_7d_in_currency,2)
             );
             $CoinInformationEntityCollection->addEntity($CoinInformationEntity);
         });

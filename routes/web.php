@@ -28,6 +28,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/coins', [CoinController::class, 'show']);
 
 Route::get('/balance', [TransactionController::class, 'show']);
+
 Route::post('/transactions', [TransactionController::class, 'store']);
 
 

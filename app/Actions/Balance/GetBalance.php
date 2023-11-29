@@ -10,12 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class GetBalance
 {
+    public function __construct(){}
+
     public function handle()
     {
         return $this->calculateBalance();
     }
 
-    public function calculateBalance() : BalanceCollection
+    public function calculateBalance(): BalanceCollection
     {
         $ownedCoinsAmount = $this->sumTransactions();
         $currentMarketPrice = $this->getCurrentMarketPrice();
@@ -55,7 +57,7 @@ class GetBalance
         return $balanceCollection;
     }
 
-    public function sumTransactions() : array
+    public function sumTransactions(): array
     {
         $transactionEntityCollection = dispatch_sync(new GetTransactions());
         $totalAmounts = [];
@@ -80,7 +82,7 @@ class GetBalance
         return $totalAmounts;
     }
 
-    public function getCurrentMarketPrice() : array
+    public function getCurrentMarketPrice(): array
     {
         $coinInformationCollection = dispatch_sync(new GetCoins());
         $currentMarketPrice = [];

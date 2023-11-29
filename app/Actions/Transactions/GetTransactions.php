@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class GetTransactions
 {
+    public function __construct(){}
+
     public function handle(TransactionRepository $transactionRepository)
     {
         return $transactionRepository->fetch(Auth::user()->id);

@@ -3,14 +3,12 @@
 namespace App\Repositories;
 
 use App\Models\Coin as CoinEloquent;
-use App\Objects\Coin;
-use App\Objects\CoinCollection;
 use App\Objects\CoinEntity;
 use App\Objects\CoinEntityCollection;
 
 class CoinRepository
 {
-   public function getCoins()
+   public function getCoins(): CoinEntityCollection
    {
        $coinsEloquent = CoinEloquent::all();
 
