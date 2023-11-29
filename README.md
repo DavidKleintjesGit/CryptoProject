@@ -5,11 +5,15 @@ How to run this project:
 </p>
 
 **Run the following commands**
-- **sail up -d**
+- **composer install**
+- **composer require laravel/sail --dev**
+- **php artisan sail:install**
+- **./vendor/bin/sail up -d**
 - **sail artisan migrate:fresh**
 - **sail artisan db:seed --class=CoinsTableSeeder**
+- **sail artisan db:seed --class=UsersTableSeeder**
 
-Now that the database is setup, 
+Now that everything is setup, 
 you can login using the following credentials:
 - Login: User@gmail.com
 - Password: password
