@@ -9,9 +9,9 @@ How to run this project:
 - **composer require laravel/sail --dev**
 - **php artisan sail:install**
 - **./vendor/bin/sail up -d**
-- **sail artisan migrate:fresh**
-- **sail artisan db:seed --class=CoinsTableSeeder**
-- **sail artisan db:seed --class=UsersTableSeeder**
+- **./vendor/bin/sail artisan migrate:fresh**
+- **./vendor/bin/sail artisan db:seed --class=CoinsTableSeeder**
+- **./vendor/bin/sail artisan db:seed --class=UsersTableSeeder**
 
 Now that everything is setup, 
 you can login using the following credentials:
