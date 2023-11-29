@@ -9,5 +9,7 @@ How to run this project:
 - **sail artisan migrate:fresh**
 - **sail artisan db:seed --class=CoinsTableSeeder**
 
-Now that the database is setup, please register and log in.
-Make a purchase and overview your balance.
+Now that the database is setup, 
+you can login using the following credentials:
+- Login: User@gmail.com
+- Password: password
