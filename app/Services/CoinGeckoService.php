@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Objects\CoinInformation;
-use App\Objects\CoinInformationCollection;
+use App\Objects\CoinInformationEntity;
+use App\Objects\CoinInformationEntityCollection;
 use Illuminate\Support\Facades\Http;
 use App\Actions\Coins\GetCoins;
 use App\Actions\Coins\GetCoinInformation;
@@ -11,24 +11,25 @@ use App\Actions\Coins\GetCoinInformation;
 
 class CoinGeckoService
 {
-    public function getCoins(): CoinInformationCollection
+    public function getCoins(): CoinInformationEntityCollection
     {
         $coinsInformation = $this->apiCall();
 
-        $coinInformationCollection = new CoinInformationCollection();
+        $CoinInformationEntityCollection = new CoinInformationEntityCollection();
 
-        $coinsInformation->map(function ($coin) use ($coinInformationCollection) {
-            $coinsInformationObject = new CoinInformation(
+        $coinsInformation->map(function ($coin) use ($CoinInformationEntityCollection) {
+            $CoinInformationEntity = new CoinInformationEntity(
+                id: $coin->id,
                 name: $coin->name,
                 currentPrice: $coin->current_price,
                 priceChange1h: $coin->price_change_percentage_1h_in_currency,
                 priceChange24h: $coin->price_change_percentage_24h_in_currency,
                 priceChange7d: $coin->price_change_percentage_7d_in_currency
             );
-            $coinInformationCollection->addObject($coinsInformationObject);
+            $CoinInformationEntityCollection->addEntity($CoinInformationEntity);
         });
 
-       return $coinInformationCollection;
+       return $CoinInformationEntityCollection;
     }
 
     public function apiCall()

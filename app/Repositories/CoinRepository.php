@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Models\Coin as CoinEloquent;
 use App\Objects\Coin;
 use App\Objects\CoinCollection;
+use App\Objects\CoinEntity;
+use App\Objects\CoinEntityCollection;
 
 class CoinRepository
 {
@@ -12,18 +14,19 @@ class CoinRepository
    {
        $coinsEloquent = CoinEloquent::all();
 
-       $coinsCollection = new CoinCollection();
+       $CoinEntityCollection = new CoinEntityCollection();
 
-       $coinsEloquent->map(function ($coin) use ($coinsCollection) {
-           $coinObject = new Coin(
+       $coinsEloquent->map(function ($coin) use ($CoinEntityCollection) {
+           $CoinEntity = new CoinEntity(
+               id: $coin->id,
                name: $coin->name,
                symbol: $coin->symbol,
                coinGeckoId: $coin->coinGeckoId
            );
-           $coinsCollection->addObject($coinObject);
+           $CoinEntityCollection->addEntity($CoinEntity);
        });
 
-       return $coinsCollection;
+       return $CoinEntityCollection;
    }
 
 }

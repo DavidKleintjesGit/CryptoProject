@@ -2,12 +2,12 @@
 
 namespace App\Actions\Coins;
 
+use App\Objects\CoinEntityCollection;
 use App\Repositories\CoinRepository;
-use App\Objects\CoinCollection;
 
 class GetCoins
 {
-    public function handle(CoinRepository $coinRepository): CoinCollection
+    public function handle(CoinRepository $coinRepository): CoinEntityCollection
     {
         return $coinRepository->getCoins();
     }
