@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\Balance\GetBalance;
 use App\Actions\Coingecko\GetCoins;
 use App\Actions\Transactions\CreateTransaction;
-use App\Actions\Transactions\GetTransactions;
+
 use Illuminate\Http\Request;
 
 

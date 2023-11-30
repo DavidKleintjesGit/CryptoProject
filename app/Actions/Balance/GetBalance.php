@@ -6,26 +6,25 @@ use App\Actions\Coingecko\GetCoins;
 use App\Actions\Transactions\GetTransactions;
 use App\Objects\Balances\Balance;
 use App\Objects\Balances\BalanceCollection;
+use App\Repositories\TransactionRepository;
+use App\Services\CoinGeckoService;
 use Illuminate\Support\Facades\Auth;
 
 class GetBalance
 {
+
+
     public function __construct(){}
 
-    public function handle()
+    public function handle(CoinGeckoService $coinGeckoService, TransactionRepository $transactionRepository): BalanceCollection
     {
-        return $this->calculateBalance();
-    }
-
-    public function calculateBalance(): BalanceCollection
-    {
-        $coinBalances = $this->sumTransactions();
+        $coinBalances = $this->sumTransactions($transactionRepository);
 
         if (!$coinBalances){
             return new BalanceCollection();
         }
 
-        $currentMarketPrice = $this->getCurrentMarketPrice();
+        $currentMarketPrice = $this->getCurrentMarketPrice($coinGeckoService);
         $balance = [];
 
         foreach ($coinBalances as $coinGeckoId => $coin){
@@ -62,9 +61,10 @@ class GetBalance
         return $balanceCollection;
     }
 
-    public function sumTransactions(): array|bool
+
+    public function sumTransactions($transactionRepository): array|bool
     {
-        $transactionEntityCollection = dispatch_sync(new GetTransactions());
+        $transactionEntityCollection = $transactionRepository->fetch(Auth::user()->id);
         $totalAmounts = [];
 
         if (!isset($transactionEntityCollection->list)) {
@@ -91,12 +91,12 @@ class GetBalance
         return $totalAmounts;
     }
 
-    public function getCurrentMarketPrice(): array
+    public function getCurrentMarketPrice($coinGeckoService): array
     {
-        $coinInformationCollection = dispatch_sync(new GetCoins());
+        $CoinInformationEntityCollection = $coinGeckoService->getCoins();
         $currentMarketPrice = [];
 
-        foreach ($coinInformationCollection->list as $coin){
+        foreach ($CoinInformationEntityCollection->list as $coin){
             $coinGeckoId = strtolower($coin->name);
             $price = $coin->currentPrice;
 
