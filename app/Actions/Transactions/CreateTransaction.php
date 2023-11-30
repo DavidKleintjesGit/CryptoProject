@@ -2,11 +2,11 @@
 
 namespace App\Actions\Transactions;
 
-use App\Objects\Transaction;
-use App\Objects\TransactionEntity;
+use App\Objects\Transactions\Transaction;
+use App\Objects\Transactions\TransactionEntity;
+use App\Repositories\TransactionRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Repositories\TransactionRepository;
 
 class CreateTransaction
 {

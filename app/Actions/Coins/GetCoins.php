@@ -2,7 +2,7 @@
 
 namespace App\Actions\Coins;
 
-use App\Objects\CoinEntityCollection;
+use App\Objects\Coins\CoinEntityCollection;
 use App\Repositories\CoinRepository;
 
 class GetCoins

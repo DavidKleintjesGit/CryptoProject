@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Objects;
+namespace App\Objects\Coins;
 
-class CoinEntity
+class Coin
 {
     public function __construct(
-        public readonly string $id,
         public readonly string $name,
         public readonly string $symbol,
         public readonly string $coinGeckoId

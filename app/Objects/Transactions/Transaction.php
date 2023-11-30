@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Objects;
+namespace App\Objects\Transactions;
 
 class Transaction
 {

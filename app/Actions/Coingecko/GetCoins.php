@@ -2,7 +2,7 @@
 
 namespace App\Actions\Coingecko;
 
-use App\Objects\CoinInformationEntityCollection;
+use App\Objects\Coins\CoinInformationEntityCollection;
 use App\Services\CoinGeckoService;
 
 class GetCoins

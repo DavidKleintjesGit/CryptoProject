@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Coin as CoinEloquent;
-use App\Objects\CoinEntity;
-use App\Objects\CoinEntityCollection;
+use App\Objects\Coins\CoinEntity;
+use App\Objects\Coins\CoinEntityCollection;
 
 class CoinRepository
 {

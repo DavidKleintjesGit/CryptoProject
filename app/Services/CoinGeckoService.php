@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Objects\CoinInformationEntity;
-use App\Objects\CoinInformationEntityCollection;
-use Illuminate\Support\Facades\Http;
-use App\Actions\Coins\GetCoins;
 use App\Actions\Coins\GetCoinInformation;
+use App\Actions\Coins\GetCoins;
+use App\Objects\Coins\CoinInformationEntity;
+use App\Objects\Coins\CoinInformationEntityCollection;
+use Illuminate\Support\Facades\Http;
 
 
 class CoinGeckoService

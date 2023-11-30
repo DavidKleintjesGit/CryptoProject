@@ -4,8 +4,8 @@ namespace App\Actions\Balance;
 
 use App\Actions\Coingecko\GetCoins;
 use App\Actions\Transactions\GetTransactions;
-use App\Objects\Balance;
-use App\Objects\BalanceCollection;
+use App\Objects\Balances\Balance;
+use App\Objects\Balances\BalanceCollection;
 use Illuminate\Support\Facades\Auth;
 
 class GetBalance

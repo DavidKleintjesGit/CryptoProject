@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Transaction as TransactionEloquent;
-use App\Objects\TransactionEntity;
-use App\Objects\TransactionEntityCollection;
+use App\Objects\Transactions\TransactionEntity;
+use App\Objects\Transactions\TransactionEntityCollection;
 
 class TransactionRepository
 {
