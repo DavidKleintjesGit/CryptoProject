@@ -52,9 +52,9 @@ class GetBalance
             $balanceObject = new Balance(
                 user_id: $id,
                 coinGeckoId: $coin['coinGeckoId'],
-                value: $coin['value'],
-                quantity: $coin['quantity'],
-                gainLoss: $coin['gainLoss'],
+                value: '$' . number_format($coin['value'], 2, '.', ','),
+                quantity: round($coin['quantity'], 0),
+                gainLoss: '$' . number_format($coin['gainLoss'], 2, '.', ','),
             );
             $balanceCollection->addObject($balanceObject);
         });

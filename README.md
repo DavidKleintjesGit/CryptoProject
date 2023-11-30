@@ -15,5 +15,5 @@ How to run this project:
 
 Now that everything is setup, 
 you can login using the following credentials:
-- Login: User@gmail.com
+- Login: user@gmail.com
 - Password: password
