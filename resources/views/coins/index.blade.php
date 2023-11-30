@@ -24,21 +24,21 @@
                     <td class="py-2 px-4 border-b border-gray-300">
                         ${{ number_format($coinInfo->currentPrice, 2) }}
                     </td>
-                    <td class="py-2 px-4 border-b border-gray-300">
+                    <td class="py-2 px-4 border-b border-gray-300 {{ $coinInfo->priceChange1h > 0 ? 'text-green-500' : 'text-red-500' }}">
                         @if ($coinInfo->priceChange1h > 0)
                             +{{ $coinInfo->priceChange1h }}%
                         @else
                             {{ $coinInfo->priceChange1h }}%
                         @endif
                     </td>
-                    <td class="py-2 px-4 border-b border-gray-300">
+                    <td class="py-2 px-4 border-b border-gray-300 {{ $coinInfo->priceChange24h > 0 ? 'text-green-500' : 'text-red-500' }}">
                         @if ($coinInfo->priceChange24h > 0)
                             +{{ $coinInfo->priceChange24h }}%
                         @else
                             {{ $coinInfo->priceChange24h }}%
                         @endif
                     </td>
-                    <td class="py-2 px-4 border-b border-gray-300">
+                    <td class="py-2 px-4 border-b border-gray-300 {{ $coinInfo->priceChange7d > 0 ? 'text-green-500' : 'text-red-500' }}">
                         @if ($coinInfo->priceChange7d > 0)
                             +{{ $coinInfo->priceChange7d }}%
                         @else
